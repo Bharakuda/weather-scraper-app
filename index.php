@@ -23,33 +23,56 @@
     <![endif]-->
 
     <style>
-        html, body{
+        html, body {
             height: 100%;
         }
 
-        .container{
+        .container {
             background-image: url("background.jpg");
             background-size: cover;
             height: 100%;
             width: 100%;
+            background-position: center;
+            padding-top: 150px;
         }
 
-    </style>
+        .center {
+            text-align: center;
 
+        }
+
+        .white {
+            color: white;
+
+        }
+
+        p {
+            padding-top: 15px;
+        }
+
+        button {
+            margin-top: 20px;
+        }
+    </style>
 
 </head>
 
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-md-6 col-md-offset-3">
+            <div class="col-md-6 col-md-offset-3 center">
+                <h1 class="center white">Weather predictor</h1>
+                <p class="lead center white">Enter your city below to get the weather forecast.</p>
 
+                <form>
+                    <div class="form-group center">
+                        <input type="text" class="form-control" placeholder="Eg. Paris, London, San Francisco" name="city" id="city">
+                    </div>
+                </form>
+                <button class="btn btn-success btn-lg center">Get weather!</button>
             </div>
         </div>
     </div>
-
-
-
 
 
 
