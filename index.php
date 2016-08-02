@@ -53,6 +53,11 @@
         button {
             margin-top: 20px;
         }
+
+        .alert {
+            margin-top: 15px;
+            display: none;
+        }
     </style>
 
 </head>
@@ -69,16 +74,39 @@
                         <input type="text" class="form-control" placeholder="Eg. Paris, London, San Francisco" name="city" id="city">
                     </div>
                 </form>
-                <button class="btn btn-success btn-lg center">Get weather!</button>
+                <button class="btn btn-success btn-lg center" id="findMyWeather">Get weather!</button>
+                <div class="alert alert-success" id="success"></div>
+                <div class="alert alert-danger" id="fail">Please try again, could not find weather data for that city...</div>
+                <div class="alert alert-danger" id="noCity">Please enter city name...</div>
+
             </div>
+
+
         </div>
     </div>
-
-
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script>
+    $("#findMyWeather").click(function(event){
+        $(".alert").hide();
+        event.preventDefault();
+        if($("#city").val()!=""){
+            $.get("scraper.php?city="+$("#city").val(), function(data){
+                if(data==""){
+                    $("#fail").fadeIn();
+                }
+                else{
+                    $("#success").html(data).fadeIn();
+                }
+            });
+        }else{
+            $("#noCity").fadeIn();
+        }
+    });
+</script>
 </body>
 </html>
